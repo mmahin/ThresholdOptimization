@@ -1,3 +1,4 @@
+from AgreementFunction.PolygonAreaCalculation import PolygonArea
 def PolygonIntersection(polygon_list1: list, polygon_list2: list):
     """This function takes two polygones and retunes their intersection polygon
 
@@ -15,9 +16,11 @@ def PolygonIntersection(polygon_list1: list, polygon_list2: list):
     list
         list of points representing intersected polygon
     """
-    intersections = []
+    Total_intersection_area = 0
     for polygon1 in polygon_list1:
         for polygon2 in polygon_list2:
             intersection_polygon = polygon1.intersection(polygon2)
-            intersections.append(intersection_polygon)
-    return intersections
+            intersection_area = PolygonArea(intersection_polygon)
+            Total_intersection_area += intersection_area
+
+    return Total_intersection_area

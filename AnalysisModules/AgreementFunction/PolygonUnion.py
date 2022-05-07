@@ -1,4 +1,5 @@
-def PolygonUnion(self, polygon1: list, polygon2: list):
+from AgreementFunction.PolygonAreaCalculation import PolygonArea
+def PolygonUnion(polygon_list1: list, polygon_list2: list, Total_intersection_area: float):
     """This function takes two polygones and retunes their intersection polygon
 
     Parameters
@@ -15,5 +16,15 @@ def PolygonUnion(self, polygon1: list, polygon2: list):
     list
         list of points representing union of polygon
     """
-    output_polygon = polygon1.union(polygon2)
-    return output_polygon
+    Total_Union_area = 0
+    for polygon in polygon_list1:
+        area = PolygonArea(polygon)
+        Total_Union_area += area
+
+    for polygon in polygon_list2:
+        area = PolygonArea(polygon)
+        Total_Union_area += area
+
+    Total_Union_area  -= Total_intersection_area
+
+    return Total_Union_area
