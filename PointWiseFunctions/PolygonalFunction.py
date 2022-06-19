@@ -18,12 +18,12 @@
         -type: floating point
 '''
 from shapely.geometry import Point, Polygon
-
+import shapely.wkt
 def PolygonalValueEstimation(point:object, dataset:object):
     row = 0
     withinPolygons = False
     for polygon in dataset['polygons']:
-        if point.within(polygon):
+        if point.within(shapely.wkt.loads(polygon)):
             return dataset['values'][row]
 
         row += 1

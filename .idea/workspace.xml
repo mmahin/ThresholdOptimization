@@ -2,11 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a6625bc-851f-4261-900c-3f7faace9fcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/CombineDataWithGeometry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/DataPreparetionClimate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/DataPreparetionCovid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/DataPreparetionEduction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/DataPreparetionHousingAreaDensity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/DataPreparetionIncome.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/DataPreparetionJobs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataProcessing/VisualizingRawPlots.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainModule/main_characteristics_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outputs/Agreement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temp/LinePlot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnalysisModules/AgreementFunction/PolygonIntersection.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnalysisModules/AgreementFunction/PolygonIntersection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnalysisModules/AgreementFunction/PolygonUnion.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnalysisModules/AgreementFunction/PolygonUnion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnalysisModules/AgreementFunction/agreementFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/AnalysisModules/AgreementFunction/agreementFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnalysisModules/GridHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/SamplePointGenerationModule/GridHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnalysisModules/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainModule/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataProcessing/RawData/Education.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/RawData/Education.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataProcessing/RawData/PopulationEstimates.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/RawData/PopulationEstimates.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataProcessing/RawData/housing_area_density_national_2010_census.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/RawData/housing_area_density_national_2010_census.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotspotGenerationModules/Dependencies/AddCoordinatesToHotspots.py" beforeDir="false" afterPath="$PROJECT_DIR$/HotspotGenerationModules/Dependencies/AddCoordinatesToHotspots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotspotGenerationModules/Dependencies/BFSofCells.py" beforeDir="false" afterPath="$PROJECT_DIR$/HotspotGenerationModules/Dependencies/BFSofCells.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotspotGenerationModules/HotspotsUsingBFS.py" beforeDir="false" afterPath="$PROJECT_DIR$/HotspotGenerationModules/HotspotsUsingBFS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotspotGenerationModules/PolygonGeneration.py" beforeDir="false" afterPath="$PROJECT_DIR$/HotspotGenerationModules/Dependencies/PolygonGeneration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointWiseFunctions/PolygonalFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointWiseFunctions/PolygonalFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VisualizationModules/HotspotsVisualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/VisualizationModules/HotspotsVisualization.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,43 +52,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MainModule" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\DataProcessing" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\HotspotGenerationModules\Dependencies" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\MainModule" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\SamplePointGenerationModule" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ThresholdOptimization\HotspotGenerationModules\Dependencies" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\MainModule" />
       <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ThresholdOptimization\AnalysisModules\AgreementFunction" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ThresholdOptimization\HotspotGenerationModules\Dependencies" />
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ThresholdOptimization\DataProcessing\ProcessedData" />
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ThresholdOptimization\DataProcessing\RawData" />
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ThresholdOptimization\DataProcessing" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="BFSofCells" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ThresholdOptimization" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HotspotGenerationModules" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\mdmah\PycharmProjects\ProfessorEick\ThresholdOptimization\HotspotGenerationModules\Dependencies\BFSofCells.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DataPreparetion" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.main_characteristics_analysis">
+    <configuration name="CombineDataWithGeometry" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ThresholdOptimization" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,7 +81,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataProcessing/DataPreparetion.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataProcessing/CombineDataWithGeometry.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -89,7 +90,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="DataPreprocess" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="DataPreparetionCovid" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ThresholdOptimization" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -101,7 +102,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataProcessing/DataPreprocess.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataProcessing/DataPreparetionCovid.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -110,7 +111,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="GridHandler" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="LinePlot" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ThresholdOptimization" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -118,11 +119,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AnalysisModules" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Temp" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AnalysisModules/GridHandler.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Temp/LinePlot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,11 +140,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AnalysisModules" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MainModule" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AnalysisModules/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MainModule/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_characteristics_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ThresholdOptimization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MainModule" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MainModule/main_characteristics_analysis.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -154,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main_characteristics_analysis" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.BFSofCells" />
-        <item itemvalue="Python.GridHandler" />
-        <item itemvalue="Python.DataPreprocess" />
-        <item itemvalue="Python.DataPreparetion" />
+        <item itemvalue="Python.LinePlot" />
+        <item itemvalue="Python.CombineDataWithGeometry" />
+        <item itemvalue="Python.DataPreparetionCovid" />
       </list>
     </recent_temporary>
   </component>
@@ -188,45 +210,66 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1650756607184">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1654097269752">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1650756607184" />
+    <state x="740" y="274" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1654097269752" />
     <state x="-1180" y="276" key="FileChooserDialogImpl/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1649787486506" />
     <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1650393180372" />
-    <state width="1899" height="391" key="GridCell.Tab.0.bottom" timestamp="1651789282687">
+    <state width="1515" height="253" key="GridCell.Tab.0.bottom" timestamp="1654753857818">
+      <screen x="-1920" y="0" width="1536" height="832" />
+    </state>
+    <state width="1515" height="253" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1654753857818" />
+    <state width="1899" height="405" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1654745872520" />
+    <state width="1899" height="364" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1654013691081" />
+    <state width="1515" height="306" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1654638904276" />
+    <state width="1515" height="253" key="GridCell.Tab.0.center" timestamp="1654753857817">
+      <screen x="-1920" y="0" width="1536" height="832" />
+    </state>
+    <state width="1515" height="253" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1654753857817" />
+    <state width="1899" height="405" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1654745872520" />
+    <state width="1899" height="364" key="GridCell.Tab.0.center/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1654013691081" />
+    <state width="1515" height="306" key="GridCell.Tab.0.center/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1654638904275" />
+    <state width="1515" height="253" key="GridCell.Tab.0.left" timestamp="1654753857816">
+      <screen x="-1920" y="0" width="1536" height="832" />
+    </state>
+    <state width="1515" height="253" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1654753857816" />
+    <state width="1899" height="405" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1654745872519" />
+    <state width="1899" height="364" key="GridCell.Tab.0.left/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1654013691080" />
+    <state width="1515" height="306" key="GridCell.Tab.0.left/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1654638904275" />
+    <state width="1515" height="253" key="GridCell.Tab.0.right" timestamp="1654753857817">
+      <screen x="-1920" y="0" width="1536" height="832" />
+    </state>
+    <state width="1515" height="253" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1654753857817" />
+    <state width="1899" height="405" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1654745872520" />
+    <state width="1899" height="364" key="GridCell.Tab.0.right/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1654013691081" />
+    <state width="1515" height="306" key="GridCell.Tab.0.right/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1654638904275" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1653626483069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="391" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1651789282687" />
-    <state width="1515" height="295" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1650393182832" />
-    <state width="1899" height="391" key="GridCell.Tab.0.center" timestamp="1651789282686">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="391" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1651789282686" />
-    <state width="1515" height="295" key="GridCell.Tab.0.center/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1650393182831" />
-    <state width="1899" height="391" key="GridCell.Tab.0.left" timestamp="1651789282686">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="391" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1651789282686" />
-    <state width="1515" height="295" key="GridCell.Tab.0.left/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1650393182831" />
-    <state width="1899" height="391" key="GridCell.Tab.0.right" timestamp="1651789282687">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="391" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1651789282686" />
-    <state width="1515" height="295" key="GridCell.Tab.0.right/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1650393182831" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1651780576312">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="162" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1651780576312" />
+    <state x="461" y="162" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1653626483069" />
     <state x="369" y="109" key="SettingsEditor/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1650390450262" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1650756573388">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1395" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1654357252083">
+      <screen x="-1920" y="0" width="1536" height="832" />
     </state>
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1650756573388" />
-    <state x="525" y="272" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1650384580043" />
+    <state x="-1395" y="274" key="com.intellij.ide.util.TipDialog/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1654357252083" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1654097264917" />
+    <state x="-1264" y="345" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1654274659359" />
+    <state x="525" y="272" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1654012377784" />
     <state x="616" y="173" width="672" height="676" key="search.everywhere.popup" timestamp="1650225420760">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1650225420760" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MainModule/main_characteristics_analysis.py</url>
+          <line>125</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

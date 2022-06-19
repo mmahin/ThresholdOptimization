@@ -1,6 +1,6 @@
 from collections import deque
-from AddCoordinatesToHotspots import AddCoordinatesToGridCellBasedHotspots
-
+from AddCoordinatesToHotspots import GridCellsToPolygones
+from PolygonGeneration import HotspotPointsWithCoordinatesToPolygonUsingShapely
 class BFSofCells:
     """Takes two dimentional grid points and returns one or more sets of clustered grid cells as hotspots, where the
     average value from the four intersection points of each grid cell is above a certain threshold.
@@ -71,6 +71,7 @@ class BFSofCells:
             while __y in range(self.__y_axis_size - 1):
                 average_of_points = (grid[__x][__y] + grid[__x][__y + 1]  + grid[__x + 1][__y]  +
                                      grid[__x + 1][__y + 1]) / 4
+                #if grid[__x][__y] and grid[__x][__y] >= self.__threshold:
                 if average_of_points >= self.__threshold:
                     self.__grid[__x][__y] = 1
                 __y = __y + 1
@@ -117,9 +118,43 @@ class BFSofCells:
                     self.__visited_points[__x + row[__neighbour]][__y + col[__neighbour]] = True
                     __queue.append([__x + row[__neighbour], __y + col[__neighbour]])
                     __island_of_points.append([__x + row[__neighbour], __y + col[__neighbour]])
-        hotspots = AddCoordinatesToGridCellBasedHotspots(__island_of_points, self.xx, self.yy)
-        return hotspots
+        #print("__island_of_points",__island_of_points)
+        #print("__island_of_points",len(__island_of_points))
+        #Hotspot_Polygon = GridCellsToPolygones(__island_of_points, self.xx, self.yy)
+        #print("Hotspots",hotspots)
+        #Hotspot_Polygon = HotspotPointsWithCoordinatesToPolygonUsingShapely(hotspots)
 
+        return __island_of_points
+
+    def __DFSofCells(self, mat, si, sj, __island_of_points):
+
+        # These arrays are used to get row and column
+        # numbers of 4 directly connect neighbours of
+        # a given cell
+        #TODO it can be changed to four neighbours if needed
+        row = [ -1,  0, 0,  1]
+        col = [  0, -1, 1,  0]
+
+
+        self.__visited_points[si][sj] = True
+        if [si, sj] not in __island_of_points:
+            __island_of_points.append([si, sj])
+        print(__island_of_points)
+
+        # Take out items one by one from queue and
+        # enqueue their univisited adjacent
+
+        for __neighbour in range(len(row)):
+            if (self.__isSafe(mat, si + row[__neighbour], sj + col[__neighbour])):
+                self.__visited_points[si + row[__neighbour]][sj + col[__neighbour]] = True
+                __island_of_points = self.__DFSofCells(mat, si + row[__neighbour], sj + col[__neighbour], __island_of_points)
+        #print("__island_of_points",__island_of_points)
+        #print("__island_of_points",len(__island_of_points))
+        #Hotspot_Polygon = GridCellsToPolygones(__island_of_points, self.xx, self.yy)
+        #print("Hotspots",hotspots)
+        #Hotspot_Polygon = HotspotPointsWithCoordinatesToPolygonUsingShapely(hotspots)
+
+        return __island_of_points #Hotspot_Polygon
 
     def getHotspots(self):
         """This function returns number hotspots in form of (connected
@@ -141,11 +176,24 @@ class BFSofCells:
         # Whenever we see an univisted vertex,
         # we increment res (number of islands)
         # also.
-
+        Visited_True = 0
+        Visited_False = 0
         for __x in range(self.__x_axis_size - 1):
             for __y in range(self.__y_axis_size - 1):
+                if self.__visited_points[__x][__y] == True:
+                    Visited_True += 1
+                else:
+                    Visited_False += 1
                 if (self.__grid[__x][__y] and not self.__visited_points[__x][__y]):
-                    hotspots.append(self.__BFSofCells(self.__grid, __x, __y))
+                    #__island_of_points = []
+                    #__island_of_points = self.__DFSofCells(self.__grid, __x, __y, __island_of_points)
+                    __island_of_points = self.__BFSofCells(self.__grid, __x, __y)
+                    Hotspot_Polygon = GridCellsToPolygones(__island_of_points, self.xx, self.yy)
+                    if type(Hotspot_Polygon) != type(None):
+                        hotspots.append(Hotspot_Polygon)
+                #print("Visited_true", Visited_True, "Visited_fals", Visited_False)
+        print(len(hotspots))
+
 
         return hotspots
 '''

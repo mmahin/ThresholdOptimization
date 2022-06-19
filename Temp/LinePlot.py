@@ -1,0 +1,8 @@
+y = [0.06448920233528481, 0.06492088166554451, 0.05653769452122962, 0.1596308986781413, 0.12134263182170867, 0.08356102345765565, 0.017642287592008702, 0.012480309418849877, 0.001599464949787367, 0.0]
+x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+import matplotlib.pyplot as plt
+plt.plot(x, y)
+plt.xlabel('Thresholds')
+plt.ylabel('Agreement Value')
+plt.title('Threshold vs Agreement Value')
+plt.show()

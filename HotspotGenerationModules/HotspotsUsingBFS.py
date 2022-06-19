@@ -1,7 +1,7 @@
 from Dependencies.BFSofCells import BFSofCells
-from PolygonGeneration import HotspotPointsWithCoordinatesToPolygonUsingShapely
-from PolygonGeneration import HotspotPointsWithCoordinatesToPolygonUsingConcaveHull
-from collections import deque
+
+
+
 def hotspotOfCellsUsingBFS(_threshold: float, _x_axis_size: int, _y_axis_size: int, _grid: list, grid:float):
     """This function returns number hotspots in form of (connected
     components of cells) in a graph.
@@ -25,6 +25,7 @@ def hotspotOfCellsUsingBFS(_threshold: float, _x_axis_size: int, _y_axis_size: i
     """
 
     obj = BFSofCells(_threshold, _x_axis_size, _y_axis_size, _grid,  grid)
-    hotspotsPolygons = HotspotPointsWithCoordinatesToPolygonUsingConcaveHull(obj.getHotspots(),1)
+    hotspotsPolygons = obj.getHotspots()
+
 
     return hotspotsPolygons
