@@ -1,7 +1,7 @@
 import pyproj
 import shapely.ops as ops
 from functools import partial
-
+import warnings
 def PolygonArea(polygon: object):
     """This function calculates and returnes total area of a shapely polygon in squared meter. This function will be used
     to calculate area of each grid cell
@@ -17,6 +17,7 @@ def PolygonArea(polygon: object):
             Total area in squared meter
 
         """
+    warnings.filterwarnings('ignore')
     geom = polygon
     geom_area = ops.transform(
         partial(

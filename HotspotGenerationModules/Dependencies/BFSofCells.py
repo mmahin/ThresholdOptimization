@@ -65,14 +65,15 @@ class BFSofCells:
 
         # Parameter: grid
 
+
         __x = 0
         while __x in range(self.__x_axis_size - 1):
             __y = 0
             while __y in range(self.__y_axis_size - 1):
-                average_of_points = (grid[__x][__y] + grid[__x][__y + 1]  + grid[__x + 1][__y]  +
-                                     grid[__x + 1][__y + 1]) / 4
+                #average_of_points = (grid[__x][__y] + grid[__x][__y + 1]  + grid[__x + 1][__y]  +
+                #                     grid[__x + 1][__y + 1]) / 4
                 #if grid[__x][__y] and grid[__x][__y] >= self.__threshold:
-                if average_of_points >= self.__threshold:
+                if grid[__x][__y] >= self.__threshold:
                     self.__grid[__x][__y] = 1
                 __y = __y + 1
             __x = __x + 1
