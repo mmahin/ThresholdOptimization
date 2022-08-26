@@ -10,6 +10,11 @@
       <sourceFolder url="file://$MODULE_DIR$/VisualizationModules" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/PointWiseFunctions" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/HotspotGenerationModules/Dependencies" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Inputs/tl_2016_us_state" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PointWiseFunctions/R_TreeGenerationModule" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MainModule" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MainModule/SubModules" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

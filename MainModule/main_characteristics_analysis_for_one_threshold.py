@@ -13,34 +13,6 @@ from numpy.random import seed
 import math
 df = pd.read_csv('C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/DataProcessing/InitialExtractedData/dataset_combined.csv')
 
-'''
-FIPS
-geometry
-bachelor_degree_density_2014_2018
-avg_precipitation_for_county
-avg_temp_for_county
-covid_cases
-covid_deaths
-population_density_on_land_2010
-household_density_on_land_2010
-UnempRate2018
-PctEmpAgriculture
-PctEmpMining
-PctEmpConstruction
-PctEmpManufacturing
-PctEmpTrade
-PctEmpTrans
-PctEmpInformation
-PctEmpFIRE
-PctEmpServices
-PctEmpGovt
-medianHouseHoldIncome
-povertyRate
-covid_cases_density
-covid_death_density
-'''
-
-
 geometries = []
 covid_case_rates = []
 unemploymentsForFourStates = []

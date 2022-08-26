@@ -140,7 +140,7 @@ class BFSofCells:
         self.__visited_points[si][sj] = True
         if [si, sj] not in __island_of_points:
             __island_of_points.append([si, sj])
-        print(__island_of_points)
+        #print(__island_of_points)
 
         # Take out items one by one from queue and
         # enqueue their univisited adjacent
@@ -193,7 +193,7 @@ class BFSofCells:
                     if type(Hotspot_Polygon) != type(None):
                         hotspots.append(Hotspot_Polygon)
                 #print("Visited_true", Visited_True, "Visited_fals", Visited_False)
-        print(len(hotspots))
+        #print(len(hotspots))
 
 
         return hotspots

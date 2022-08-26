@@ -23,7 +23,7 @@ def PolygonalValueEstimation(point:object, dataset:object):
     row = 0
     withinPolygons = False
     for polygon in dataset['polygons']:
-        if point.within(shapely.wkt.loads(polygon)):
+        if point.within(polygon):
             return dataset['values'][row]
 
         row += 1
