@@ -12,8 +12,8 @@ data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/Threshol
 
 #Set Inputs
 #data access inputs
-variable1_name = 'population_density_on_land_2010'
-variable2_name = 'household_density_on_land_2010'
+variable1_name = 'covid_cases_density'
+variable2_name = 'medianHouseHoldIncome'
 
 variable1_df, variable2_df, StateFIPSDict = getVariableDataframesAndSpatialIndexes(data_path, variable1_name, variable2_name)
 
@@ -27,18 +27,18 @@ steps = 100
 hotspot_area_restriction = 0.3
 
 # Create thresholds min and gradient
-max_variable2 = max(variable2_df['values'])
-min_variable2= min(variable2_df['values'])
+max_variable2 = 90000 #max(variable2_df['values'])
+min_variable2= 20000 #min(variable2_df['values'])
 variable_cutpoint_variable2= (max_variable2 - min_variable2)/steps
 
-max_variable1 = max(variable1_df['values'])
-min_variable1 =  min(variable1_df['values'])
+max_variable1 = 0.45#max(variable1_df['values'])
+min_variable1 =  0.2475#min(variable1_df['values'])
 variable_cutpoint_variable1 = (max_variable1 - min_variable1)/steps
-
+print(max_variable2, min_variable2, max_variable1, min_variable1)
 # Visualization Inputs
-X_label = 'Population Density (t)'
-Y_label = 'Household Density(t\')'
-Z_Label = '$I_{(Population\ Density, t),(Household\ Density, t\'))}$'
+X_label = 'Covid-19 Infection Rate (t)'
+Y_label = 'Median Income(t\')'
+Z_Label = '$I_{(Covid-19\ Infection\ Rate , t),(Median\ Income, t\'))}$'
 
 # calculate total observation area
 polygones = []
@@ -72,7 +72,9 @@ threshold1_values, threshold2_values, agreements = AgreementValueWithAreaConstra
                                                      grid_column_size, grid, total_area, steps,
                                                      hotspot_area_restriction)
 
-
+with open('agreement3.txt', 'w') as f:
+    for agreement in agreements:
+        f.write(f"{agreement}\n")
 # Visualize the agreement search space
 VisualizeTwoVariableInterestingnessSearchSpace(threshold1_values, threshold2_values, agreements, X_label, Y_label, Z_Label)
 

@@ -1,7 +1,9 @@
 from scipy.stats import pearsonr
 import pandas as pd
-df = pd.read_csv('C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/DataProcessing/InitialExtractedData/dataset_combined.csv')
+from SubModules.ObtainVariableDataframesAndStateDictionary import getAllVariableDataframesAndSpatialIndexes
 
+data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/DataProcessing/InitialExtractedData/dataset_combined.csv'
+df = getAllVariableDataframesAndSpatialIndexes(data_path)
 variable1 = 'covid_cases_density'
 variable2 = 'bachelor_degree_density_2014_2018'
 variable3 = 'avg_precipitation_for_county'
@@ -45,26 +47,30 @@ df[variable19].fillna(int(df[variable2].mean()), inplace=True)
 df[variable20].fillna(int(df[variable2].mean()), inplace=True)
 
 
-corr1, _ = pearsonr(df[variable1], df[variable2])
-corr2, _ = pearsonr(df[variable1], df[variable3])
-corr3, _ = pearsonr(df[variable1], df[variable4])
-corr4, _ = pearsonr(df[variable1], df[variable5])
-corr5, _ = pearsonr(df[variable1], df[variable6])
-corr6, _ = pearsonr(df[variable1], df[variable7])
-corr7, _ = pearsonr(df[variable1], df[variable8])
-corr8, _ = pearsonr(df[variable1], df[variable9])
-corr9, _ = pearsonr(df[variable1], df[variable10])
-corr10, _ = pearsonr(df[variable1], df[variable11])
-corr11, _ = pearsonr(df[variable1], df[variable12])
-corr12, _ = pearsonr(df[variable1], df[variable13])
-corr13, _ = pearsonr(df[variable1], df[variable14])
-corr14, _ = pearsonr(df[variable1], df[variable15])
-corr15, _ = pearsonr(df[variable1], df[variable16])
-corr16, _ = pearsonr(df[variable1], df[variable17])
-corr17, _ = pearsonr(df[variable1], df[variable18])
-corr18, _ = pearsonr(df[variable1], df[variable19])
-corr19, _ = pearsonr(df[variable1], df[variable20])
+corr1, pval1 = pearsonr(df[variable1], df[variable2])
+corr2, pval2 = pearsonr(df[variable1], df[variable3])
+corr3, pval3 = pearsonr(df[variable1], df[variable4])
+corr4, pval4 = pearsonr(df[variable1], df[variable5])
+corr5, pval5 = pearsonr(df[variable1], df[variable6])
+corr6, pval6 = pearsonr(df[variable1], df[variable7])
+corr7, pval7 = pearsonr(df[variable1], df[variable8])
+corr8, pval8 = pearsonr(df[variable1], df[variable9])
+corr9, pval9 = pearsonr(df[variable1], df[variable10])
+corr10, pval10 = pearsonr(df[variable1], df[variable11])
+corr11, pval11 = pearsonr(df[variable1], df[variable12])
+corr12, pval12 = pearsonr(df[variable1], df[variable13])
+corr13, pval13 = pearsonr(df[variable1], df[variable14])
+corr14, pval14 = pearsonr(df[variable1], df[variable15])
+corr15, pval15 = pearsonr(df[variable1], df[variable16])
+corr16, pval16 = pearsonr(df[variable1], df[variable17])
+corr17, pval17 = pearsonr(df[variable1], df[variable18])
+corr18, pval18 = pearsonr(df[variable1], df[variable19])
+corr19, pval19 = pearsonr(df[variable1], df[variable20])
 
 print(round(corr1,2), round(corr2,2), round(corr3,2), round(corr4,2), round(corr5,2), round(corr6,2), round(corr7,2), round(corr8,2)
       ,round(corr9,2), round(corr10,2), round(corr11,2), round(corr12,2), round(corr13,2), round(corr14,2), round(corr15,2),
       round(corr16,2), round(corr17,2), round(corr18,2), round(corr19,2))
+
+print(round(pval1,2), round(pval2,2), round(pval3,2), round(pval4,2), round(pval5,2), round(pval6,2), round(pval7,2), round(pval8,2)
+      ,round(pval9,2), round(pval10,2), round(pval11,2), round(pval12,2), round(pval13,2), round(pval14,2), round(pval15,2),
+      round(pval16,2), round(pval17,2), round(pval18,2), round(pval19,2))

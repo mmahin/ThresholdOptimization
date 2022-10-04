@@ -13,9 +13,9 @@ def getVariableDataframesAndSpatialIndexes(file_path, variable1_name, variable2_
     StateFIPSDict = {}
     for count in range(len(df['FIPS'])):
         stateFIPS = int(df['FIPS'][count]/1000)
-        #if stateFIPS in range(0,57):
+        if stateFIPS in range(0,57):
         #if stateFIPS == 4 or stateFIPS == 35 or stateFIPS == 40  or stateFIPS == 48:
-        if stateFIPS in range(0, 57):
+        #if stateFIPS in range(0, 57):
             stateFIPSList.append(stateFIPS)
             new_polygon = shapely.wkt.loads(df['geometry'][count])
             new_polygon.simplify(0.01, preserve_topology=False)
@@ -40,5 +40,21 @@ def getVariableDataframesAndSpatialIndexes(file_path, variable1_name, variable2_
     variable2_df['polygons'] = geometries
 
     return variable1_df, variable2_df, StateFIPSDict
+
+def getAllVariableDataframesAndSpatialIndexes(file_path):
+    df = pd.read_csv(file_path)
+    geometries = []
+
+    for count in range(len(df['FIPS'])):
+        stateFIPS = int(df['FIPS'][count]/1000)
+        #if stateFIPS in range(0,57):
+        #if stateFIPS == 4 or stateFIPS == 35 or stateFIPS == 40  or stateFIPS == 48:
+        if stateFIPS in range(0, 57):
+            new_polygon = shapely.wkt.loads(df['geometry'][count])
+            new_polygon = new_polygon.simplify(0.01, preserve_topology=False)
+            df['geometry'][count] = new_polygon
+            geometries.append(new_polygon.simplify(0.01, preserve_topology=False))
+
+    return df
 #covid_case_rates_df, medianIncome_df, StateFIPSDict = getVariableDataframesAndSpatialIndexes(file_path, variable1_name, variable2_name)
 #print(covid_case_rates_df, medianIncome_df, StateFIPSDict)
