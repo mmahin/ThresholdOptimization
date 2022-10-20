@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def VisualizeTwoVariableInterestingnessSearchSpace(threshold1_values, threshold2_values, agreements, X_label, Y_label, Z_Label):
-    x = threshold1_values
-    y = threshold2_values
+def VisualizeTwoVariableInterestingnessSearchSpaceWithoutRestriction(min_variable1,max_variable1, min_variable2, max_variable2, steps, agreements, X_label, Y_label, Z_Label):
+    x = np.linspace(min_variable1, max_variable1, steps)
+    y = np.linspace(min_variable2, max_variable2, steps)
     Y, X = np.meshgrid(y, x)
     Z= agreements
-    print(Z)
+
     fig = plt.figure()
     ax = plt.axes(projection='3d')
     print(np.shape(X),np.shape(Y),np.shape(np.array(Z)))
