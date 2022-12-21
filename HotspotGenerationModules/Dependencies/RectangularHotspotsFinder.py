@@ -27,7 +27,7 @@ class RectangularHotspotsFinder:
     """
 
     def __init__(self, threshold: float, x_axis_size: int, y_axis_size: int, grid_mattrix: list,
-                 grid):
+                 grid, alpha):
         """Initializes class variables
 
             Parameters
@@ -41,13 +41,14 @@ class RectangularHotspotsFinder:
             grid_mattrix : list of list of float type
                 Matrix in a form of list of list and elements are float type
             """
-
+        self.alpha = alpha
         self.__threshold = threshold
         self.__x_axis_size = x_axis_size
         self.__y_axis_size = y_axis_size
         self.xx = grid[0]
         self.yy = grid[1]
         self.grid= grid
+        self.grid_mattrix = grid_mattrix
         ### __grid indicates points above threshold, as 1 others as 0
         ### __visited_points memorize the points traversed
 
@@ -75,6 +76,7 @@ class RectangularHotspotsFinder:
                 #average_of_points = (grid[__x][__y] + grid[__x][__y + 1]  + grid[__x + 1][__y]  +
                 #                     grid[__x + 1][__y + 1]) / 4
                 #if grid[__x][__y] and grid[__x][__y] >= self.__threshold:
+
                 if grid[__x][__y] >= self.__threshold:
                     self.__grid[__x][__y] = 1
                 __y = __y + 1
@@ -190,7 +192,7 @@ class RectangularHotspotsFinder:
         return leftSideApproved, upSideApproved, rightSideApproved, downSideApproved
     def __RectangularHotspotFinder(self, mat, si, sj):
         #print([si,sj])
-        allowed_percent = 0.75
+        allowed_percent = self.alpha
         __hotspot = []
         upperLeftCorner = [si, sj ]
         upperRightCorner = [si, sj ]
@@ -361,9 +363,20 @@ class RectangularHotspotsFinder:
             __hotspot.append(self.grid[upperRightCorner[0]][upperRightCorner[1]])
             __hotspot.append(self.grid[LowerRightCorner[0]][LowerRightCorner[1]])
             __hotspot.append(self.grid[lowerLeftCorner[0]][lowerLeftCorner[1]])
+            values = []
+            indexes= []
             for i in range(upperLeftCorner[0],lowerLeftCorner[0]+1):
                 for j in  range(upperLeftCorner[1],upperRightCorner[1]+1):
                     self.__visited_points[i][j] = True
+                    p = self.grid_mattrix[i][j]
+                    values.append(p)
+                    indexes.append([i,j])
+            max_interestingness_value = round(max(values),2)
+            max_interestingness_index = values.index(max(values))
+            max_index = indexes[max_interestingness_index]
+            max_thresholds = [round((self.grid[max_index[0]][max_index[1]]).x,2),round((self.grid[max_index[0]][max_index[1]]).y,2)]
+
+            print(max_interestingness_value,max_thresholds)
             #print(__hotspot)
             #print(self.__visited_points)
         return __hotspot
@@ -403,8 +416,10 @@ class RectangularHotspotsFinder:
                     __island_of_points = self.__RectangularHotspotFinder(self.__grid, __x, __y)
                     #print(self.__visited_points)
                     from shapely import geometry
-
-
+                    points = []
+                    for point in __island_of_points:
+                        points.append((round(point.x,2), round(point.y,2)))
+                    print(points)
                     hotspot_polygon = geometry.Polygon(__island_of_points)
                     hotspots.append(hotspot_polygon)
 
@@ -429,7 +444,11 @@ def __main__():
            [0.6, 0  , 0.7, 0  , 0.65, 0.7]]
     import pandas as pd
     df = pd.read_csv(
-        "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/MainModule/agreement2.csv")
+        "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/Agreements/agreementTwoAreaRestrictedCovidBachelor.csv")
+    minx = 0.033258873
+    maxx = 1.315789474
+    miny = 0#0#22679#0#3#0#5#0#1#0#1#0#34#0##/1000000
+    maxy = 78#6#78#136191#0.012143858#56#32#82#21#17#24#35#50#22#42#60#18#37106.0#69468.0#78#6#78##/1000000
     matrix = []
     for i in range(len(df['List'])):
         strings = ((df['List'][i].replace("[", "")).replace("]", "")).split(",")
@@ -437,36 +456,47 @@ def __main__():
         for item in strings:
             values.append(float(item))
         matrix.append(values)
-    matrix2 = matrix
+
+    matrix2 = []
+    for item in matrix:
+
+        count = 0
+        for i in range(len(item), 100):
+            item.insert(count, 0)
+            count += 1
+        matrix2.append(item)
     count = 0
+
     for i in range(len(matrix), 100):
-        vec = [0]*len(matrix[0])
-        matrix.insert(count,vec)
+        vec = [0]*len(matrix2[0])
+        matrix2.insert(count,vec)
         count += 1
-    mat = matrix
-    print(len(matrix))
+
+    mat = matrix2
+    print(len(matrix2),len(matrix2[0]))
     x_axis_size = 100
     y_axis_size = 100
-    threshold = 0.1
-    minx = 0.033258873
-    maxx = 1.315789474
-    miny = 0/1000
-    maxy = 78/1000
-    grid, grid_matrix = GridGenerator(minx, maxx, miny, maxy, x_axis_size, y_axis_size)
+    threshold = 0.001
 
-    obj = RectangularHotspotsFinder(threshold,x_axis_size,y_axis_size,mat, grid_matrix)
+
+
+    grid, grid_matrix = GridGenerator(minx, maxx, miny, maxy, x_axis_size, y_axis_size)
+    alpha = 0.25
+    obj = RectangularHotspotsFinder(threshold,x_axis_size,y_axis_size,mat, grid_matrix, alpha)
     hotspot_polygon = obj.getHotspots()
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(1, 1, figsize=(10, 8))
     import geopandas as gpd
 
     for item in hotspot_polygon:
-        print(item.exterior.xy)
+        #print(item.exterior.xy)
         p = gpd.GeoSeries(item)
-        print(p)
+        #print(p)
         p.plot(linewidth=0.8, ax=ax, edgecolor='red', color='r', facecolor="none")
     import numpy as np
-    plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Bachelor Degree Rate", yticks=[ 0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06], yticklabels=['0', '10', '20', '30', '40', '50', '60'])
+    #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06], yticklabels=['0', '10', '20', '30', '40', '50', '60'])
+    #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0.04, 0.05, 0.06, 0.07, 0.08, 0.09], yticklabels=['40000', '50000', '60000', '70000', '80000', '90000'])
+
     plt.show()
 
 
