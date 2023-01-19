@@ -372,11 +372,22 @@ class RectangularHotspotsFinder:
                     values.append(p)
                     indexes.append([i,j])
             max_interestingness_value = round(max(values),2)
+            temp_count = 0
+            support_count = 0
+            sum_val = 0
+            for value in values:
+                if value >= 0:
+                    sum_val += value
+                    if value >= self.__threshold:
+                        support_count += 1
+                temp_count += 1
+            print("Support:", round(((len(values)/10000)*100),2), "Confidence:", round(((support_count/len(values))*100),2))
+            average_interestingness_value = round((sum_val/temp_count), 2)
             max_interestingness_index = values.index(max(values))
             max_index = indexes[max_interestingness_index]
-            max_thresholds = [round((self.grid[max_index[0]][max_index[1]]).x,2),round((self.grid[max_index[0]][max_index[1]]).y,2)]
+            max_thresholds = [round((self.grid[max_index[0]][max_index[1]]).x,6),round((self.grid[max_index[0]][max_index[1]]).y,6)]
 
-            print(max_interestingness_value,max_thresholds)
+            print("Max, Average",max_interestingness_value,average_interestingness_value,max_thresholds)
             #print(__hotspot)
             #print(self.__visited_points)
         return __hotspot
@@ -418,7 +429,7 @@ class RectangularHotspotsFinder:
                     from shapely import geometry
                     points = []
                     for point in __island_of_points:
-                        points.append((round(point.x,2), round(point.y,2)))
+                        points.append((round(point.x,4), round(point.y,4)))
                     print(points)
                     hotspot_polygon = geometry.Polygon(__island_of_points)
                     hotspots.append(hotspot_polygon)
@@ -443,61 +454,97 @@ def __main__():
            [0.6, 0  , 0.7, 0.9  , 0.65, 0.7],
            [0.6, 0  , 0.7, 0  , 0.65, 0.7]]
     import pandas as pd
-    df = pd.read_csv(
-        "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/Agreements/agreementTwoAreaRestrictedCovidBachelor.csv")
-    minx = 0.033258873
-    maxx = 1.315789474
-    miny = 0#0#22679#0#3#0#5#0#1#0#1#0#34#0##/1000000
-    maxy = 78#6#78#136191#0.012143858#56#32#82#21#17#24#35#50#22#42#60#18#37106.0#69468.0#78#6#78##/1000000
-    matrix = []
-    for i in range(len(df['List'])):
-        strings = ((df['List'][i].replace("[", "")).replace("]", "")).split(",")
-        values = []
-        for item in strings:
-            values.append(float(item))
-        matrix.append(values)
+    files = ["agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplFire-50-10.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplService-50-10.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdBachlorIncome.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidBachlor.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidDeath.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplAgriculture.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplConstruction.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplFire.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplInformation.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplMining.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplService.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTrade.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTransportation.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidHousehold.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidIncome.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidPopulation.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidPoverty.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidPrecipitation.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidTemperature.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplGovernment.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplManufacturing.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdCovidUnemployment.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdUmemploymentPovert-50-10.csv"]
 
-    matrix2 = []
-    for item in matrix:
+    var1_mins = [0, 0, 0,  0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+                 0.03, 0.03, 0.03, 0.03, 1]
+    var1_maxs = [78, 78, 78,1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32,
+                 1.32, 1.32, 1.32, 1.32, 18]
+    var2_mins = [0, 5, 22679, 0, 0, 0, 0, 0, 0, 0, 5, 1, 2, 0, 22679, 0, 3, 0, 34, 0, 0, 1, 3]
+    var2_maxs = [21, 82, 136191, 78, 0.012, 60, 22, 21, 17, 42, 82, 35, 24, 37106, 136191, 69468, 56, 6, 78, 32, 50, 18,
+                 56]
+    for count in range(len(files)):
+        print("\n",files[count],"\n")
+        path = "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/Agreements/TwoThresholdsTwolimit/"+files[count]
+        df = pd.read_csv(path)
+        minx = var1_mins[count]
+        maxx = var1_maxs[count]
+        miny = var2_mins[count]
+        maxy = var2_maxs[count]
+        matrix = []
+        for i in range(len(df['List'])):
+            strings = ((df['List'][i].replace("[", "")).replace("]", "")).split(",")
+            values = []
+            for item in strings:
+                values.append(float(item))
+            matrix.append(values)
 
+        matrix2 = []
+        for item in matrix:
+
+            count = 0
+            for i in range(len(item), 100):
+                item.insert(count, 0)
+                count += 1
+            matrix2.append(item)
         count = 0
-        for i in range(len(item), 100):
-            item.insert(count, 0)
+
+        for i in range(len(matrix), 100):
+            vec = [0]*len(matrix2[0])
+            matrix2.insert(count,vec)
             count += 1
-        matrix2.append(item)
-    count = 0
 
-    for i in range(len(matrix), 100):
-        vec = [0]*len(matrix2[0])
-        matrix2.insert(count,vec)
-        count += 1
-
-    mat = matrix2
-    print(len(matrix2),len(matrix2[0]))
-    x_axis_size = 100
-    y_axis_size = 100
-    threshold = 0.001
+        mat = matrix2
+        print(len(matrix2),len(matrix2[0]))
+        x_axis_size = 100
+        y_axis_size = 100
+        threshold = 0.2
 
 
 
-    grid, grid_matrix = GridGenerator(minx, maxx, miny, maxy, x_axis_size, y_axis_size)
-    alpha = 0.25
-    obj = RectangularHotspotsFinder(threshold,x_axis_size,y_axis_size,mat, grid_matrix, alpha)
-    hotspot_polygon = obj.getHotspots()
-    import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(1, 1, figsize=(10, 8))
-    import geopandas as gpd
+        grid, grid_matrix = GridGenerator(minx, maxx, miny, maxy, x_axis_size, y_axis_size)
+        alpha = 0.25
+        obj = RectangularHotspotsFinder(threshold,x_axis_size,y_axis_size,mat, grid_matrix, alpha)
 
-    for item in hotspot_polygon:
-        #print(item.exterior.xy)
-        p = gpd.GeoSeries(item)
-        #print(p)
-        p.plot(linewidth=0.8, ax=ax, edgecolor='red', color='r', facecolor="none")
-    import numpy as np
-    #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06], yticklabels=['0', '10', '20', '30', '40', '50', '60'])
-    #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0.04, 0.05, 0.06, 0.07, 0.08, 0.09], yticklabels=['40000', '50000', '60000', '70000', '80000', '90000'])
-
-    plt.show()
+        hotspot_polygon = obj.getHotspots()
+        '''
+        import matplotlib.pyplot as plt
+        fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+        import geopandas as gpd
+    
+        for item in hotspot_polygon:
+            #print(item.exterior.xy)
+            p = gpd.GeoSeries(item)
+            #print(p)
+            p.plot(linewidth=0.8, ax=ax, edgecolor='red', color='r', facecolor="none")
+        import numpy as np
+        #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06], yticklabels=['0', '10', '20', '30', '40', '50', '60'])
+        #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0.04, 0.05, 0.06, 0.07, 0.08, 0.09], yticklabels=['40000', '50000', '60000', '70000', '80000', '90000'])
+    
+        plt.show()
+        '''
 
 
 __main__()

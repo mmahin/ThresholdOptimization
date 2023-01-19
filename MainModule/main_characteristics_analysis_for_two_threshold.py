@@ -13,7 +13,7 @@ data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/Threshol
 
 #Set Inputs
 #data access inputs
-variable1_name = 'covid_cases_density'
+variable1_name = 'bachelor_degree_density_2014_2018'
 variable2_name = 'medianHouseHoldIncome'
 
 variable1_df, variable2_df, StateFIPSDict = getVariableDataframesAndSpatialIndexes(data_path, variable1_name, variable2_name)
@@ -25,8 +25,8 @@ grid_column_size = 100
 
 # Agreement Generation Inputs
 steps = 100
-hotspot_area_restriction = 0.5
-
+hotspot_area_restriction1 = 0.5
+hotspot_area_restriction2 = 0.1
 # Create thresholds min and gradient
 max_variable2 = max(variable2_df['values'])#60#100000#
 min_variable2= min(variable2_df['values'])#15#40000#
@@ -37,11 +37,11 @@ min_variable1 =  min(variable1_df['values'])#0.15#
 variable_cutpoint_variable1 = (max_variable1 - min_variable1)/steps
 print(max_variable2, min_variable2, max_variable1, min_variable1)
 # Visualization Inputs
-X_label = 'Covid-19 Infection Rate (t)'
-Y_label = 'Government Employee Percent (t\')'
-Z_Label = '$I_{(Covid-19\ Infection\ Rate , t),(Government\ Employee\ Percent, t\'))}$'
+X_label = 'Bachelor Degree Rate (t)'
+Y_label = 'Median Income (t\')'
+Z_Label = '$I_{(Bachelor\ Degree\ Rate , t),(Median\ Income, t\'))}$'
 
-Output_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/Agreements/agreementTwoAreaRestrictedCovidEmplGovernment.txt'
+Output_path = '/Agreements/TwoThresholdsTwolimit/agreementTwoAreaRestrictedWithTwoThresholdBachlorIncome.txt'
 # calculate total observation area
 polygones = []
 for polygon in variable1_df['polygons']:
@@ -72,7 +72,7 @@ threshold1_values, threshold2_values, agreements = AgreementValueWithTwoAreaCons
                                                      variable_cutpoint_variable1, min_variable2,variable_cutpoint_variable2,
                                                      variable1_value_matrix,variable2_value_matrix,grid_row_size,
                                                      grid_column_size, grid, total_area, steps,
-                                                     hotspot_area_restriction)
+                                                     hotspot_area_restriction1, hotspot_area_restriction2)
 
 with open(Output_path, 'w') as f:
     for agreement in agreements:

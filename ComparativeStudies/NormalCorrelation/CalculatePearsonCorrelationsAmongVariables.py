@@ -1,9 +1,42 @@
 from scipy.stats import pearsonr
 import pandas as pd
 from SubModules.ObtainVariableDataframesAndStateDictionary import getAllVariableDataframesAndSpatialIndexes
+import numpy as np
+import matplotlib.pyplot as plt
 
 data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/DataProcessing/InitialExtractedData/dataset_combined.csv'
 df = getAllVariableDataframesAndSpatialIndexes(data_path)
+variables = ['covid_cases_density', 'bachelor_degree_density_2014_2018', 'avg_precipitation_for_county', 'avg_temp_for_county',
+             'population_density_on_land_2010', 'household_density_on_land_2010', 'UnempRate2018', 'PctEmpAgriculture',
+             'PctEmpMining', 'PctEmpConstruction', 'PctEmpManufacturing', 'PctEmpTrade', 'PctEmpTrans', 'PctEmpInformation',
+             'PctEmpFIRE', 'PctEmpServices', 'PctEmpGovt', 'medianHouseHoldIncome', 'povertyRate', 'covid_death_density']
+labels = ['Covid-19 Infection Rate', 'Bachelor Degree Rate', 'Average Precipitation', 'Average Temperature',
+             'Population Density', 'Household Density', 'Unemployment Rate', 'Agriculture Employee Rate',
+             'Mining Employee Rate', 'Construction Employee Rate', 'Manufacturing Employee Rate', 'Trade  Employee Rate',
+             'Tranportation Employee Rate', 'Information  Employee Rate', 'FIRE Service  Employee Rate',
+              'Services  Employee Rate', 'Goverment  Employee Rate', 'Median HouseHold Income', 'Poverty Rate', 'Covid-19 Death Rate']
+correlation_mat = np.empty([len(variables),len(variables)])
+significance_mat = [[0 for _ in range(len(variables))] for _ in range(len(variables))]
+for count1 in range(len(variables)):
+      df[variables[count1]].fillna(int(df[variables[count1]].mean()), inplace=True)
+      for count2 in range(len(variables)):
+            df[variables[count2]].fillna(int(df[variables[count2]].mean()), inplace=True)
+            corr, pval = pearsonr(df[variables[count1]], df[variables[count2]])
+            correlation_mat[count1][count2] = corr
+            significance_mat[count1][count2] = pval
+            print(round(corr,2),round(pval,2))
+fig, ax = plt.subplots()
+ax.matshow(correlation_mat, cmap='hot')
+for (i, j), z in np.ndenumerate(correlation_mat):
+    ax.text(j, i, '{:0.1f}'.format(z), ha='center', va='center')
+#plt.colorbar()
+xaxis = np.arange(len(labels))
+ax.set_xticks(xaxis,rotation=90)
+ax.set_yticks(xaxis,rotation=90)
+ax.set_xticklabels(labels,rotation=90)
+ax.set_yticklabels(labels)
+plt.show()
+
 variable1 = 'covid_cases_density'
 variable2 = 'bachelor_degree_density_2014_2018'
 variable3 = 'avg_precipitation_for_county'

@@ -1,0 +1,32 @@
+"agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplFire-50-10.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplService-50-10.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdBachlorIncome.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidBachlor.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidDeath.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplAgriculture.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplConstruction.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplFire.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplInformation.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplMining.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplService.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTrade.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTransportation.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidHousehold.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidIncome.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidPopulation.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidPoverty.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidPrecipitation.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidTemperature.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplGovernment.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplManufacturing.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdCovidUnemployment.csv",
+"agreementTwoAreaRestrictedWithTwoThresholdUmemploymentPovert-50-10.csv"
+-------------------------------------------------------------------------
+var1_mins= [0,0,0,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,1.32,18]
+__________________________________________________________________________
+var1_maxs= [78,78,78,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,1]
+__________________________________________________________________________
+var2_mins= [0,5,22679,0,0,0,0,0,0,0,5,1,2,0,22679,0,3,0,34,0,0,1,3]
+__________________________________________________________________________
+var2_maxs= [21,82,136191,78,0.012,60,22,21,17,42,82,35,24,37106,136191,69468,56,6,78,32,50,18,56]
+__________________________________________________________________________

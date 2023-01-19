@@ -42,7 +42,7 @@ def PointAndValueVisualizer2(point_x,point_y, Values, X_label,Y_label,Z_Label):
     plt.show()
 '''
 import pandas as pd
-df = pd.read_csv("C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/GradientSearch/maximasMedianIncomeCoid_100_100.csv")
+df = pd.read_csv("C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/GradientSearch/maximasMedianIncomeCoid_100_200 .csv")
 X_label = 'Covid-19 Infection Rate (t)'
 Y_label = 'Median Income(t\')'
 Z_Label = '$I_{(Covid-19\ Infection\ Rate , t),(Median\ Income, t\'))}$'
@@ -81,7 +81,7 @@ maximum_iteration = 2000
 step1 = 100
 step2 = 100
 target_threshold1 = 10
-target_threshold2 = 10
+target_threshold2 = 20
 hotspot_area_restriction = 0.5
 
 target_threshold1_start = 0.21

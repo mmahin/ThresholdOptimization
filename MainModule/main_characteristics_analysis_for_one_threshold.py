@@ -22,7 +22,7 @@ bachelor_degree_density_2014_2018 = []
 #fig, axs = plt.subplots(2, 1, constrained_layout=False)
 for count in range(len(df['FIPS'])):
     stateFIPS = int(df['FIPS'][count]/1000)
-    if stateFIPS in range(0,50):#== 4 or stateFIPS == 35 or stateFIPS == 40  or stateFIPS == 48:##
+    if stateFIPS in range(0,57):#== 4 or stateFIPS == 35 or stateFIPS == 40  or stateFIPS == 48:##
         #poly = shapely.wkt.loads(df['geometry'][count])
         #gdf = gpd.GeoDataFrame(index=[0], crs='epsg:4326', geometry=[poly])
         geometries.append(df['geometry'][count])
