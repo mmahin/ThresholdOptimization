@@ -4,19 +4,19 @@ from shapely.ops import unary_union
 from SubModules.ObtainVariableDataframesAndStateDictionary import getVariableDataframesAndSpatialIndexes
 from SubModules.AssignValuesToGridUsingPointWiseFunctions import AssignValuesToGridUsingPointWiseFunctions
 from SubModules.VisualizeOneVariableInterestingnessSearchSpace import VisualizeOneVariableInterestingnessSearchSpace
-from SubModules.AgreementValueGeneratorForOneThreshold import AgreementValueGeneratorForOneThreshold
-
+from SubModules.AgreementValueGeneratorForOneThresholdWithAreaConstraint import AgreementValueGeneratorForOneThresholdWithAreaConstrint
+from AgreementFunction.PolygonAreaCalculation import PolygonArea
 data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/DataProcessing/InitialExtractedData/dataset_combined.csv'
 
 #Set Inputs
 #data access inputs
-variable1_name = 'covid_cases_density'
+variable1_name = 'povertyRate'
 variable2_name = 'population_density_on_land_2010'
 
-names = ["bachelor_degree_density_2014_2018", "avg_precipitation_for_county", "avg_temp_for_county", "population_density_on_land_2010",\
-          "household_density_on_land_2010", "UnempRate2018", "PctEmpAgriculture", "PctEmpMining", "PctEmpConstruction", "PctEmpManufacturing",\
-          "PctEmpTrade", "PctEmpTrans", "PctEmpInformation", "PctEmpFIRE", "PctEmpServices", "PctEmpGovt", "medianHouseHoldIncome",\
-           "povertyRate", "covid_death_density"]
+names = ["UnempRate2018", "covid_death_density", "avg_temp_for_county", "PctEmpGovt", "avg_precipitation_for_county",
+           "covid_cases_density", "PctEmpServices", "bachelor_degree_density_2014_2018",  "population_density_on_land_2010",\
+          "household_density_on_land_2010",  "PctEmpAgriculture", "PctEmpMining", "PctEmpConstruction", "PctEmpManufacturing",\
+          "PctEmpTrade", "PctEmpTrans", "PctEmpInformation", "PctEmpFIRE",   "medianHouseHoldIncome"]
 for variable2_name in names:
     covid_case_rates_df, medianIncome_df, StateFIPSDict = getVariableDataframesAndSpatialIndexes(data_path, variable1_name, variable2_name)
 
@@ -26,19 +26,19 @@ for variable2_name in names:
 
 
     # Agreement Generation Inputs
-    steps = 150
+    steps = 100
 
     # Create thresholds min and gradient
     max_MedianIncome2018 = max(medianIncome_df['values'])
     min_MedianIncome2018 = min(medianIncome_df['values'])
     variable_cutpoint_MedianIncome2018 = (max_MedianIncome2018 - min_MedianIncome2018)/steps
 
-    covid_case_rates_threshold = 0.3
+    covid_case_rates_threshold = 14
 
 
     # Visualization Inputs
     X_label = 'Median Income(t\')'
-    Y_label = '$I_{(Covid-19\ Infection\ Rate, 0.3),(Median\ Income, t\'))}$'
+    Y_label = '$I_{(COVID-19\ Infection\ Rate, 0.3),(Median\ Income, t\'))}$'
 
     # calculate total observation area
     polygones = []
@@ -46,6 +46,14 @@ for variable2_name in names:
         polygones.append(polygon)
 
     combined_observation_area_polygon = gpd.GeoSeries(unary_union(polygones))
+    total_area = 0
+    for polygon in combined_observation_area_polygon:
+        area = PolygonArea(polygon)
+        total_area += area
+
+    hotspot_area_restriction1 =  0.75
+    hotspot_area_restriction2 = 0.1
+    total_observation_area_size = total_area
     # Create the observation grid
     bounds = combined_observation_area_polygon.bounds
     minx = (bounds['minx']).values
@@ -76,13 +84,21 @@ for variable2_name in names:
         covid_case_rates_value_matrix.append(covid_case_rates_row_values)
 
     # Find  valid thresholds and agreement values
-    threshold2_values, agreements = AgreementValueGeneratorForOneThreshold(covid_case_rates_threshold,
+    threshold2_values, agreements = AgreementValueGeneratorForOneThresholdWithAreaConstrint(covid_case_rates_threshold,
                                                             min_MedianIncome2018,variable_cutpoint_MedianIncome2018,
                                                          covid_case_rates_value_matrix,medianIncome_value_matrix,grid_row_size,
-                                                         grid_column_size, grid, steps)
-    print(variable2_name, len(agreements), round(sum(agreements)/len(agreements),3),round(max(agreements),3),round(threshold2_values[agreements.index(max(agreements))],3) )
-'''
+                                                         grid_column_size, grid, steps, hotspot_area_restriction1, hotspot_area_restriction2, total_observation_area_size)
+    sumA = 0
+    length = 0
+    for item in agreements:
+        if item >= 0:
+            sumA += item
+            length += 1
+    if length == 0:
+        length = 9999999999999
+    print(variable2_name, len(agreements), round(sum(agreements)/len(agreements),4),round(max(agreements),4),round(threshold2_values[agreements.index(max(agreements))],4) , sumA/length)
 
+'''
 import pandas as pd
 agreement_df = pd.DataFrame()
 agreement_df['thresholds'] = threshold2_values

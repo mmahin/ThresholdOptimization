@@ -72,14 +72,14 @@ X_label = 'Covid-19 Infection Rate (t)'
 Y_label = 'Median Income(t\')'
 Z_Label = '$I_{(Covid-19\ Infection\ Rate , t),(Median\ Income, t\'))}$'
 # Grid generation Inputs
-grid_row_size = 100
-grid_column_size = 100
+grid_row_size = 10
+grid_column_size = 10
 
 learning_rate = .1
 maximum_iteration = 2000
 # Agreement Generation Inputs
-step1 = 100
-step2 = 100
+step1 = 10
+step2 = 10
 target_threshold1 = 10
 target_threshold2 = 20
 hotspot_area_restriction = 0.5

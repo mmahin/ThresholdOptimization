@@ -429,7 +429,7 @@ class RectangularHotspotsFinder:
                     from shapely import geometry
                     points = []
                     for point in __island_of_points:
-                        points.append((round(point.x,4), round(point.y,4)))
+                        points.append((round(point.x,2), round(point.y,2)))
                     print(points)
                     hotspot_polygon = geometry.Polygon(__island_of_points)
                     hotspots.append(hotspot_polygon)
@@ -454,6 +454,7 @@ def __main__():
            [0.6, 0  , 0.7, 0.9  , 0.65, 0.7],
            [0.6, 0  , 0.7, 0  , 0.65, 0.7]]
     import pandas as pd
+
     files = ["agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplFire-50-10.csv",
                 "agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplService-50-10.csv",
                 "agreementTwoAreaRestrictedWithTwoThresholdBachlorIncome.csv",
@@ -476,23 +477,35 @@ def __main__():
                 "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplGovernment.csv",
                 "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplManufacturing.csv",
                 "agreementTwoAreaRestrictedWithTwoThresholdCovidUnemployment.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdUmemploymentPovert-50-10.csv"]
+                "agreementTwoAreaRestrictedWithTwoThresholdUmemploymentPovert-50-10.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdIncomePoverty-50-10.csv",
+                "agreementTwoAreaRestrictedWithTwoThresholdBachelorPoverty-50-10.csv"]
 
     var1_mins = [0, 0, 0,  0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
-                 0.03, 0.03, 0.03, 0.03, 1]
+                 0.03, 0.03, 0.03, 0.03, 1, 22679, 0]
     var1_maxs = [78, 78, 78,1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32,
-                 1.32, 1.32, 1.32, 1.32, 18]
-    var2_mins = [0, 5, 22679, 0, 0, 0, 0, 0, 0, 0, 5, 1, 2, 0, 22679, 0, 3, 0, 34, 0, 0, 1, 3]
+                 1.32, 1.32, 1.32, 1.32, 18, 136191, 78]
+    var2_mins = [0, 5, 22679, 0, 0, 0, 0, 0, 0, 0, 5, 1, 2, 0, 22679, 0, 3, 0, 34, 0, 0, 1, 3, 3, 3]
     var2_maxs = [21, 82, 136191, 78, 0.012, 60, 22, 21, 17, 42, 82, 35, 24, 37106, 136191, 69468, 56, 6, 78, 32, 50, 18,
-                 56]
+                 56, 56, 56]
+
+    #files = ["agreementNoAreaRestrictedWithTwoThresholdCovidBachelor.csv",
+    #            "agreementNoAreaRestrictedWithTwoThresholdCovidIncome.csv"]
+
+    #var1_mins = [0.03, 0.03]
+    #var1_maxs = [0.45, 0.5]
+    #var2_mins = [0, 22679]
+    #var2_maxs = [65, 100000]
     for count in range(len(files)):
         print("\n",files[count],"\n")
         path = "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/Agreements/TwoThresholdsTwolimit/"+files[count]
+        #path = "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/TKDE/Agreements/Files/" + \
+        #       files[count]
         df = pd.read_csv(path)
         minx = var1_mins[count]
         maxx = var1_maxs[count]
-        miny = var2_mins[count]
-        maxy = var2_maxs[count]
+        miny = var2_mins[count]#/(var2_maxs[count]*10)
+        maxy = var2_maxs[count]#/(var2_maxs[count]*10)
         matrix = []
         for i in range(len(df['List'])):
             strings = ((df['List'][i].replace("[", "")).replace("]", "")).split(",")
@@ -520,18 +533,18 @@ def __main__():
         print(len(matrix2),len(matrix2[0]))
         x_axis_size = 100
         y_axis_size = 100
-        threshold = 0.2
+        threshold = 0.1
 
 
 
         grid, grid_matrix = GridGenerator(minx, maxx, miny, maxy, x_axis_size, y_axis_size)
-        alpha = 0.25
+        alpha = 0.3
         obj = RectangularHotspotsFinder(threshold,x_axis_size,y_axis_size,mat, grid_matrix, alpha)
 
         hotspot_polygon = obj.getHotspots()
         '''
         import matplotlib.pyplot as plt
-        fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+        fig, ax = plt.subplots(1, 1, figsize=(6, 6))
         import geopandas as gpd
     
         for item in hotspot_polygon:
@@ -540,7 +553,11 @@ def __main__():
             #print(p)
             p.plot(linewidth=0.8, ax=ax, edgecolor='red', color='r', facecolor="none")
         import numpy as np
-        #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06], yticklabels=['0', '10', '20', '30', '40', '50', '60'])
+        plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0.02, 0.04, 0.06, 0.08, 0.1], yticklabels=['20000', '40000',  '60000', '80000',  '100000'])
+        plt.yticks(fontsize=8)
+        plt.xticks(fontsize=8)
+        plt.xlabel(xlabel="Covid-19 Infection Rate", fontsize=10)
+        plt.ylabel(ylabel= "Median Income", fontsize=10)
         #plt.setp(ax, xlabel="Covid-19 Infection Rate", ylabel= "Median Income", yticks=[ 0.04, 0.05, 0.06, 0.07, 0.08, 0.09], yticklabels=['40000', '50000', '60000', '70000', '80000', '90000'])
     
         plt.show()

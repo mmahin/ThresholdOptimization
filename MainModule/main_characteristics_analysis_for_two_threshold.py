@@ -19,12 +19,12 @@ variable2_name = 'medianHouseHoldIncome'
 variable1_df, variable2_df, StateFIPSDict = getVariableDataframesAndSpatialIndexes(data_path, variable1_name, variable2_name)
 
 # Grid generation Inputs
-grid_row_size = 100
-grid_column_size = 100
+grid_row_size = 10
+grid_column_size = 10
 
 
 # Agreement Generation Inputs
-steps = 100
+steps = 10
 hotspot_area_restriction1 = 0.5
 hotspot_area_restriction2 = 0.1
 # Create thresholds min and gradient

@@ -3,6 +3,7 @@ from Dependencies.InverseBFSofCells import InverseBFSofCells
 
 
 def coldspotOfCellsUsingBFS(_threshold: float, _x_axis_size: int, _y_axis_size: int, _grid: list, grid:float):
+
     """This function returns number hotspots in form of (connected
     components of cells) in a graph.
     Parameters

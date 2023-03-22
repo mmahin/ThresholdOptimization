@@ -1,5 +1,5 @@
 from collections import deque
-from AddCoordinatesToHotspots import GridCellsToPolygones
+from AddCoordinatesToHotspots import GridCellsToPolygonesInverse
 from PolygonGeneration import HotspotPointsWithCoordinatesToPolygonUsingShapely
 class InverseBFSofCells:
     """Takes two dimentional grid points and returns one or more sets of clustered grid cells as hotspots, where the
@@ -189,7 +189,7 @@ class InverseBFSofCells:
                     #__island_of_points = []
                     #__island_of_points = self.__DFSofCells(self.__grid, __x, __y, __island_of_points)
                     __island_of_points = self.__BFSofCells(self.__grid, __x, __y)
-                    Hotspot_Polygon = GridCellsToPolygones(__island_of_points, self.xx, self.yy)
+                    Hotspot_Polygon = GridCellsToPolygonesInverse(__island_of_points, self.xx, self.yy)
                     if type(Hotspot_Polygon) != type(None):
                         hotspots.append(Hotspot_Polygon)
                 #print("Visited_true", Visited_True, "Visited_fals", Visited_False)

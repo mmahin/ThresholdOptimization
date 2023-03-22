@@ -32,6 +32,7 @@ for count1 in range(len(variables)):
             df[variables[count2]].fillna(int(df[variables[count2]].mean()), inplace=True)
             moran_bv1 = Moran_BV(df[variables[count1]], df[variables[count2]], w)
             correlation_mat[count1][count2] = round(moran_bv1.I,2)
+            print(variables[count1],variables[count2],round(moran_bv1.I, 2))
 
 fig, ax = plt.subplots()
 ax.matshow(correlation_mat, cmap='hot')

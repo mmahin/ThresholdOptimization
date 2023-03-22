@@ -80,7 +80,9 @@ moran_bv19 = Moran_Local_BV(df[variable1], df[variable20], w)
 from splot.esda import lisa_cluster
 import matplotlib.pyplot as plt
 print("Covid-19,bachelor_degree")
-lisa_cluster(moran_bv1, gdf, p=0.05, figsize = (9,9))
+lm = lisa_cluster(moran_bv1, gdf, p=1, figsize = (9,9))
+
+print(moran_bv1.q)
 plt.show()
 print("Covid-19,avg_precipitation")
 lisa_cluster(moran_bv2, gdf, p=0.05, figsize = (9,9))

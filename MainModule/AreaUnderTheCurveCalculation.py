@@ -56,36 +56,38 @@ from SamplePointGenerationModule.GridHandler import GridGenerator
 #df = pd.read_csv(
 #    "/Agreements/TwoThresholdsTwolimit/agreementTwoAreaRestrictedWithTwoThresholdBachlorIncome.csv")
 files = ["agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplFire-50-10.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplService-50-10.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdBachlorIncome.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidBachlor.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidDeath.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplAgriculture.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplConstruction.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplFire.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplInformation.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplMining.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplService.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTrade.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTransportation.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidIncome.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidPoverty.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidPrecipitation.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidTemperature.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplGovernment.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplManufacturing.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidUnemployment.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdUmemploymentPovert-50-10.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidHousehold.csv",
-                "agreementTwoAreaRestrictedWithTwoThresholdCovidPopulation.csv"]
+         "agreementTwoAreaRestrictedWithTwoThresholdBachelorEmplService-50-10.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdBachlorIncome.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidBachlor.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidDeath.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplAgriculture.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplConstruction.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplFire.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplInformation.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplMining.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplService.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTrade.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidEmplTransportation.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidIncome.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidPoverty.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidPrecipitation.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidTemperature.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplGovernment.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidTEmplManufacturing.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidUnemployment.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdUmemploymentPovert-50-10.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdIncomePoverty-50-10.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdBachelorPoverty-50-10.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidHousehold.csv",
+         "agreementTwoAreaRestrictedWithTwoThresholdCovidPopulation.csv"]
 
-var1_mins = [0, 0, 0, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32,
-             1.32, 1.32, 1.32, 1.32, 18, 1.32, 1.32]
-var1_maxs = [78, 78, 78, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
-             0.03, 0.03, 0.03, 0.03, 1, 0.03, 0.03]
-var2_mins = [0, 5, 22679, 0, 0, 0, 0, 0, 0, 0, 5, 1, 2, 22679, 3, 0, 34, 0, 0, 1, 3,  0, 0]
+var1_mins = [0, 0, 0, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+             0.03, 0.03, 0.03, 0.03, 1, 22679, 0, 0.03, 0.03]
+var1_maxs = [78, 78, 78, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32, 1.32,
+             1.32, 1.32, 1.32, 1.32, 18, 136191, 78, 1.32, 1.32]
+var2_mins = [0, 5, 22679, 0, 0, 0, 0, 0, 0, 0, 5, 1, 2, 22679, 3, 0, 34, 0, 0, 1, 3, 3, 3, 0, 0]
 var2_maxs = [21, 82, 136191, 78, 0.012, 60, 22, 21, 17, 42, 82, 35, 24, 136191, 56, 6, 78, 32, 50, 18,
-             56, 37106, 69468]
+             56, 56, 56, 37106, 69468]
 for count in range(len(files)):
     print("\n", files[count], "\n")
     path = "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/Agreements/TwoThresholdsTwolimit/" + \
