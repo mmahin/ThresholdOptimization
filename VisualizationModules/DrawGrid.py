@@ -25,7 +25,13 @@ import numpy as np
 # Generate 10 equidistant points along latitude and longitude axis
 lat_vals = np.linspace(min_lat, max_lat, 10)
 lon_vals = np.linspace(min_lon, max_lon, 10)
-lat_labels = [str(round(val,1)) for val in lat_vals.astype(float)]
+lat_labels = []
+for count in range(0,len(lat_vals)):
+    lat_labels.append( str(round(lat_vals[count], 1))+"|("+str(count+1)+")")
+
+lon_labels = []
+for count in range(0,len(lon_vals)):
+    lon_labels.append(str(round(lon_vals[count], 1))+"|("+str(count+1)+")")
 threshold1_set = []
 threshold2_set = []
 
@@ -70,9 +76,11 @@ ax.grid(True, linewidth=1, color='gray', alpha=0.5, which='major', axis='both', 
 ax.set_xticks(lat_vals, rotation=90)
 ax.set_xticklabels(lat_labels,rotation=90)
 ax.set_yticks(lon_vals)
+ax.set_yticklabels(lon_labels)
 # Add legend
 cbar = plt.colorbar(mappable = scatter, ticks = [0,1])
-ax.set_xlabel('Latitude')
-ax.set_ylabel('Longitude')
+cbar.set_ticklabels(["$<t$", "$\geq t$"])
+ax.set_xlabel('Latitude|(Index)')
+ax.set_ylabel('Longitude|(Index)')
 #plt.legend(['Points'])
 plt.show()

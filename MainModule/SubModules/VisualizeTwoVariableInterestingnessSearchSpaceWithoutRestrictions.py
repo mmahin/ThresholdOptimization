@@ -10,9 +10,13 @@ def VisualizeTwoVariableInterestingnessSearchSpaceWithoutRestriction(min_variabl
     fig = plt.figure()
     ax = plt.axes(projection='3d')
     print(np.shape(X),np.shape(Y),np.shape(np.array(Z)))
-    surf = ax.plot_surface(X, Y, np.array(Z), rstride=1, cstride=1,
-                    cmap='viridis', edgecolor='none')
-    fig.colorbar(surf, shrink=0.5, aspect=5)
+    mappable = plt.cm.ScalarMappable(cmap=plt.cm.viridis)
+    mappable.set_array(Z)
+    mappable.set_clim(0, 1)
+    surf = ax.plot_surface(X, Y, np.array(Z), cmap='Spectral', norm=mappable.norm, linewidth=0,
+                            antialiased=False, cstride=10, rstride=1, alpha=0.5)
+    cbar_ax = fig.add_axes([0.925, 0.15, 0.025, 0.7])
+    fig.colorbar(surf, cax=cbar_ax)
     ax.set_xlabel(X_label)
     ax.set_ylabel(Y_label)
     ax.set_zlabel(Z_Label)

@@ -17,18 +17,18 @@ data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/Threshol
 #Set Inputs
 #data access inputs
 variable1_name = 'covid_cases_density'
-variable2_name = 'covid_death_density'
+variable2_name = 'bachelor_degree_density_2014_2018'
 
 
 variable1_df, variable2_df, StateFIPSDict = getVariableDataframesAndSpatialIndexes(data_path, variable1_name, variable2_name)
 
 # Grid generation Inputs
-grid_row_size = 200
-grid_column_size = 200
+grid_row_size = 100
+grid_column_size = 100
 
 
 # Agreement Generation Inputs
-steps = 200
+steps = 100
 hotspot_area_restriction1 = 0.6
 hotspot_area_restriction2 = 0.1
 # Create thresholds min and gradient

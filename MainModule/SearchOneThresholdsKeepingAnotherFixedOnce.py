@@ -11,7 +11,7 @@ data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/Threshol
 #Set Inputs
 #data access inputs
 variable1_name = 'covid_cases_density'
-variable2_name = 'medianHouseHoldIncome'
+variable2_name = 'PctEmpInformation'
 
 #names = ["bachelor_degree_density_2014_2018", "avg_precipitation_for_county", "avg_temp_for_county", "population_density_on_land_2010",\
 #          "household_density_on_land_2010", "UnempRate2018", "PctEmpAgriculture", "PctEmpMining", "PctEmpConstruction", "PctEmpManufacturing",\
@@ -19,7 +19,8 @@ variable2_name = 'medianHouseHoldIncome'
 #           "povertyRate", "covid_death_density"]
 #for variable2_name in names:
 covid_case_rates_df, medianIncome_df, StateFIPSDict = getVariableDataframesAndSpatialIndexes(data_path, variable1_name, variable2_name)
-
+import pandas as pd
+print(pd.unique(medianIncome_df['values']))
 # Grid generation Inputs
 grid_row_size = 100
 grid_column_size = 100
