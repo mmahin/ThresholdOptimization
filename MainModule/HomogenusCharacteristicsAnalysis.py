@@ -17,6 +17,9 @@ from HotspotsUsingBFS import hotspotOfCellsUsingBFS
 from AgreementFunction.agreementFunction import Agreement
 from AgreementFunction.PolygonAreaCalculation import PolygonArea
 from scipy.stats import chi2_contingency
+from SubModules.SearchThresholds.FindAlphaThreshold import FindAlphaThreshold
+from SubModules.SearchThresholds.FindBetaThreshold import FindBetaThreshold
+from SubModules.SearchThresholds.FindCloseThreshold import FindTargetThreshold
 data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/DataProcessing/InitialExtractedData/dataset_combined.csv'
 
 #Set Inputs
@@ -53,9 +56,8 @@ grid, grid_matrix = GridGenerator(minx, maxx, miny, maxy, grid_row_size, grid_co
 # Assign values to grid points using polygonal function
 variable1_value_matrix, variable2_value_matrix =  AssignValuesToGridUsingPointWiseFunctions(grid_matrix, variable1_df, variable2_df, StateFIPSDict)
 
-alpha = 50
-beta = 3
-
+alpha = 0.50
+beta = 0.03
 variable1_values_sorted = np.sort(pd.unique(variable1_df['values']))
 variable2_values_sorted = np.sort(pd.unique(variable2_df['values']))
 
@@ -64,130 +66,60 @@ variable1_values_sorted = variable1_values_sorted[~null_indices]
 null_indices = np.isnan(variable2_values_sorted)
 variable2_values_sorted = variable2_values_sorted[~null_indices]
 
+variable1_low_threshold_index, a1 = FindAlphaThreshold(variable1_values_sorted,variable1_value_matrix, grid_row_size,grid_column_size,grid, total_area,alpha,0.01)
+variable1_high_threshold_index, a2 = FindBetaThreshold(variable1_values_sorted,variable1_value_matrix, grid_row_size,grid_column_size,grid, total_area,beta,0.01)
+variable2_low_threshold_index, a3 = FindAlphaThreshold(variable2_values_sorted,variable2_value_matrix, grid_row_size,grid_column_size,grid, total_area,alpha,0.01)
+variable2_high_threshold_index, a4 = FindBetaThreshold(variable2_values_sorted,variable2_value_matrix, grid_row_size,grid_column_size,grid, total_area,beta,0.01)
 
-low_index = 0
-high_index = len(variable1_values_sorted) - 1
-output_index = 0
-output_area_coverage = 0
-best_diff = 1
-best_index = 0
-best_area_coverage = 0
-#mid_index = int((low_index+high_index)/2)
-area_coverage = 1
-while low_index < high_index:
-    mid_index = int((low_index + high_index) / 2)
-    t_m = variable1_values_sorted[mid_index]
-    hotspots = hotspotOfCellsUsingBFS(t_m, grid_row_size, grid_column_size, variable1_value_matrix, grid)
-    Total_hotspot_area = 0
-    for polygon in hotspots:
-        area = PolygonArea(polygon)
-        Total_hotspot_area += area
-    area_coverage = Total_hotspot_area / total_area
-    output_index = mid_index
-    output_area_coverage = area_coverage
-    if area_coverage < 0.5:
-        diff = 0.5 - area_coverage
-        if diff < best_diff :
-            best_diff = diff
-            best_index = mid_index
-            best_area_coverage = area_coverage
-    if area_coverage < 0.49:
-        high_index = mid_index - 1
-
-    elif area_coverage >= 0.50:
-        low_index = mid_index + 1
-    else:
-        while area_coverage < 0.5 and area_coverage > 0.49 :
-            new_mid = mid_index - 1
-            t_m = variable1_values_sorted[new_mid]
-            hotspots = hotspotOfCellsUsingBFS(t_m, grid_row_size, grid_column_size, variable1_value_matrix, grid)
-            Total_hotspot_area = 0
-            for polygon in hotspots:
-                area = PolygonArea(polygon)
-                Total_hotspot_area += area
-            area_coverage = Total_hotspot_area / total_area
-            if area_coverage < 0.5:
-                diff = 0.5 - area_coverage
-                if diff < best_diff:
-                    best_diff = diff
-                    best_index = mid_index
-                    best_area_coverage = area_coverage
-            if area_coverage <= 0.5:
-                mid_index = new_mid
-        output_index = mid_index
-        output_area_coverage =  area_coverage
-        break
-
-print(output_index, output_area_coverage)
-print(best_index,best_area_coverage)
-
-low_index = 0
-high_index = len(variable1_values_sorted) - 1
-output_index2 = 0
-output_area_coverage2 = 0
-best_diff = 1
-best_index = 0
-best_area_coverage = 0
-#mid_index = int((low_index+high_index)/2)
-area_coverage = 1
-while low_index < high_index:
-    mid_index = int((low_index + high_index) / 2)
-    t_m = variable1_values_sorted[mid_index]
-    hotspots = hotspotOfCellsUsingBFS(t_m, grid_row_size, grid_column_size, variable1_value_matrix, grid)
-    Total_hotspot_area = 0
-    for polygon in hotspots:
-        area = PolygonArea(polygon)
-        Total_hotspot_area += area
-    area_coverage = Total_hotspot_area / total_area
-    output_index2 = mid_index
-    output_area_coverage2 = area_coverage
-    if area_coverage > 0.04:
-        diff = area_coverage - 0.04
-        if diff < best_diff :
-            best_diff = diff
-            best_index = mid_index
-            best_area_coverage = area_coverage
-    if area_coverage < 0.05:
-        high_index = mid_index - 1
-
-    elif area_coverage >= 0.04:
-        low_index = mid_index + 1
-    else:
-        while area_coverage < 0.05 and area_coverage > 0.04:
-            new_mid = mid_index - 1
-            t_m = variable1_values_sorted[new_mid]
-            hotspots = hotspotOfCellsUsingBFS(t_m, grid_row_size, grid_column_size, variable1_value_matrix, grid)
-            Total_hotspot_area = 0
-            for polygon in hotspots:
-                area = PolygonArea(polygon)
-                Total_hotspot_area += area
-            area_coverage = Total_hotspot_area / total_area
-            if area_coverage > 0.04:
-                diff = area_coverage - 0.04
-                if diff < best_diff:
-                    best_diff = diff
-                    best_index = mid_index
-                    best_area_coverage = area_coverage
-            if area_coverage >= 0.04:
-                mid_index = new_mid
-            print(mid_index, area_coverage)
-        output_index2 = mid_index
-        output_area_coverage2 = area_coverage
-
-        break
-    print(output_index2, output_area_coverage2)
-print(output_index2, output_area_coverage2)
-print(best_index,best_area_coverage)
-
-target_threshold1_cutpoint = int((output_index2- output_index)/100)
+print(variable1_low_threshold_index, a1 , variable1_high_threshold_index, a2, variable2_low_threshold_index, a3 , variable2_high_threshold_index, a4 )
+target_threshold1_cutpoint = int((variable1_high_threshold_index- variable1_low_threshold_index)/100)
 
 threshold1_set = []
+threshold1_area_coverage = []
 threshold2_set = []
-
-count = output_index
-while count < output_index2:
-    threshold1_set.append(variable1_values_sorted[count])
+threshold2_area_coverage = []
+Variable1_hotspots = []
+agreements = []
+expected = []
+count = variable1_low_threshold_index
+while count < variable1_high_threshold_index:
+    t = variable1_values_sorted[count]
+    hotspots = hotspotOfCellsUsingBFS(t, grid_row_size, grid_column_size, variable1_value_matrix, grid)
+    Variable1_hotspots.append(Variable1_hotspots)
+    Total_hotspot_area = 0
+    for polygon in hotspots:
+        area = PolygonArea(polygon)
+        Total_hotspot_area += area
+    area_coverage = Total_hotspot_area / total_area
+    threshold1_area_coverage.append(round(area_coverage,2))
+    threshold1_set.append(t)
     count += target_threshold1_cutpoint
+
+for count in range(len(threshold1_area_coverage)):
+    t,c = FindTargetThreshold(variable2_values_sorted,variable2_value_matrix, grid_row_size,grid_column_size,grid, total_area,threshold1_area_coverage[count],0.05)
+    print(threshold1_set[count],round(threshold1_area_coverage[count],2),t,round(c,2))
+    if abs(threshold1_area_coverage[count]-c)<0.05:
+        hotspots = hotspotOfCellsUsingBFS(t, grid_row_size, grid_column_size, variable1_value_matrix, grid)
+        agreement = Agreement(Variable1_hotspots[count], hotspots)
+        agreements.append(agreement)
+        expected.append(threshold1_area_coverage[count] * c)
+    threshold2_set.append(t)
+    threshold2_area_coverage.append(round(c,2))
+
+print("Thresholds 1",threshold1_set)
+print("Thresholds 2",threshold2_set)
+print("Area Coverage 1",threshold1_area_coverage)
+print("Area Coverage 2",threshold2_area_coverage)
+print("Agreements:", agreements,len(agreements))
+print("Expected:", expected,len(expected))
+print("Sum Agreements:", sum(agreements))
+print("Sum Expected:",sum(expected))
+from scipy.stats import chisquare
+chi2, p = chisquare(agreements, expected)
+print(chi2, p)
+chi2, p = chisquare(expected, agreements)
+print(chi2, p)
+
 '''
 variable1_thresholds = []
 variable1_thresholds_area = []

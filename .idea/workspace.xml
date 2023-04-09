@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a6625bc-851f-4261-900c-3f7faace9fcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AnalysisModules/ApproximateAgreementFunction/agreementFunction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AnalysisModules/ApproximateAgreementFunction/countAboveThreshold.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AnalysisModules/ApproximateAgreementFunction/countMutualPointsAboveTwoThresholds.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainModule/GeneratePointWiseValuesAndSaveToFile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainModule/HomogenusCharacteristicsAnalysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainModule/SubModules/AgreementValueGeneratorForTwoThresholdsWithAlternativeAgreement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainModule/SubModules/AgreementValueGeneratorForTwoThresholdsWithAlternativeAgreements.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainModule/main_characteristics_analysis_for_two_thresholdWithAlternativeAgreement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RandomizedHillClimbing/AgreementValueGeneratorForTwoThresholdsWithAlternativeAgreement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RandomizedHillClimbing/FindStep.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RandomizedHillClimbing/HillClimbing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VisualizationModules/HotspotVisualizationDemo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainModule/SubModules/SearchThresholds/FindAlphaThreshold.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainModule/SubModules/SearchThresholds/FindBetaThreshold.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainModule/SubModules/SearchThresholds/FindCloseThreshold.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainModule/SearchOneThresholdsKeepingAnotherFixedOnce.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainModule/SearchOneThresholdsKeepingAnotherFixedOnce.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainModule/SubModules/VisualizeTwoVariableInterestingnessSearchSpaceWithoutRestrictions.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainModule/SubModules/VisualizeTwoVariableInterestingnessSearchSpaceWithoutRestrictions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainModule/Temp/main_characteristics_analysis_for_two_threshold1.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainModule/Temp/main_characteristics_analysis_for_two_threshold1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainModule/Temp/main_characteristics_analysis_for_two_threshold8.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainModule/Temp/main_characteristics_analysis_for_two_threshold8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outputs/TKDE/SampleGrid.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outputs/TKDE/SampleGrid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VisualizationModules/DrawGrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/VisualizationModules/DrawGrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainModule/GeneratePointWiseValuesAndSaveToFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainModule/GeneratePointWiseValuesAndSaveToFile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainModule/HomogenusCharacteristicsAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainModule/HomogenusCharacteristicsAnalysis.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,46 +36,25 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/RandomizedHillClimbing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MainModule/SubModules/SearchThresholds" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\Outputs" />
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\Outputs\Agreements\TwoThresholdsTwolimit" />
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\GradientSearch" />
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\Outputs\Agreements" />
-      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\AnalysisModules\AgreementFunction" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\MainModule\SubModules\SearchThresholds" />
       <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\RandomizedHillClimbing" />
       <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization" />
       <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\AnalysisModules\ApproximateAgreementFunction" />
       <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\MainModule\SubModules" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\MainModule" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\MainModule\SubModules" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\Outputs" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\Outputs\Agreements\TwoThresholdsTwolimit" />
+      <recent name="C:\Users\mdmah\PycharmProjects\ProfessorEick\ProfessorEick\ThresholdOptimization\GradientSearch" />
     </key>
   </component>
   <component name="RunManager" selected="Python.HomogenusCharacteristicsAnalysis">
-    <configuration name="AgreementValueGeneratorForTwoThresholdsWithAlternativeAgreement" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ThresholdOptimization" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MainModule/SubModules" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MainModule/SubModules/AgreementValueGeneratorForTwoThresholdsWithAlternativeAgreement.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="DrawGrid" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ThresholdOptimization" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,6 +68,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VisualizationModules/DrawGrid.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GeneratePointWiseValuesAndSaveToFile" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ThresholdOptimization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MainModule" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MainModule/GeneratePointWiseValuesAndSaveToFile.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -176,10 +163,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.HomogenusCharacteristicsAnalysis" />
+        <item itemvalue="Python.GeneratePointWiseValuesAndSaveToFile" />
         <item itemvalue="Python.DrawGrid" />
         <item itemvalue="Python.SearchMaximas" />
         <item itemvalue="Python.main_characteristics_analysis_for_two_thresholdWithAlternativeAgreement" />
-        <item itemvalue="Python.AgreementValueGeneratorForTwoThresholdsWithAlternativeAgreement" />
       </list>
     </recent_temporary>
   </component>
@@ -215,32 +202,32 @@
     </state>
     <state x="658" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1678110313933" />
     <state x="526" y="255" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1678313021700" />
-    <state width="1899" height="383" key="GridCell.Tab.0.bottom" timestamp="1681037650523">
+    <state width="1899" height="383" key="GridCell.Tab.0.bottom" timestamp="1681077765976">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="162" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1679285653974" />
-    <state width="1899" height="383" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681037650523" />
+    <state width="1899" height="383" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681077765976" />
     <state width="1899" height="508" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1680199735529" />
     <state width="1515" height="508" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1680214863032" />
-    <state width="1899" height="383" key="GridCell.Tab.0.center" timestamp="1681037650523">
+    <state width="1899" height="383" key="GridCell.Tab.0.center" timestamp="1681077765976">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="162" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1679285653973" />
-    <state width="1899" height="383" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681037650523" />
+    <state width="1899" height="383" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681077765976" />
     <state width="1899" height="508" key="GridCell.Tab.0.center/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1680199735529" />
     <state width="1515" height="508" key="GridCell.Tab.0.center/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1680214863032" />
-    <state width="1899" height="383" key="GridCell.Tab.0.left" timestamp="1681037650523">
+    <state width="1899" height="383" key="GridCell.Tab.0.left" timestamp="1681077765976">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="162" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1679285653973" />
-    <state width="1899" height="383" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681037650523" />
+    <state width="1899" height="383" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681077765976" />
     <state width="1899" height="508" key="GridCell.Tab.0.left/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1680199735529" />
     <state width="1515" height="508" key="GridCell.Tab.0.left/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1680214863032" />
-    <state width="1899" height="383" key="GridCell.Tab.0.right" timestamp="1681037650523">
+    <state width="1899" height="383" key="GridCell.Tab.0.right" timestamp="1681077765976">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="162" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1679285653973" />
-    <state width="1899" height="383" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681037650523" />
+    <state width="1899" height="383" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681077765976" />
     <state width="1899" height="508" key="GridCell.Tab.0.right/0.0.1536.824/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1680199735529" />
     <state width="1515" height="508" key="GridCell.Tab.0.right/0.0.1536.824/-1920.2.1920.1040@0.0.1536.824" timestamp="1680214863032" />
     <state width="1899" height="347" key="GridCell.Tab.1.bottom" timestamp="1679523629786">
