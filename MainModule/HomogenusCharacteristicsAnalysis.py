@@ -85,7 +85,7 @@ count = variable1_low_threshold_index
 while count < variable1_high_threshold_index:
     t = variable1_values_sorted[count]
     hotspots = hotspotOfCellsUsingBFS(t, grid_row_size, grid_column_size, variable1_value_matrix, grid)
-    Variable1_hotspots.append(Variable1_hotspots)
+    Variable1_hotspots.append(hotspots)
     Total_hotspot_area = 0
     for polygon in hotspots:
         area = PolygonArea(polygon)
@@ -97,14 +97,15 @@ while count < variable1_high_threshold_index:
 
 for count in range(len(threshold1_area_coverage)):
     t,c = FindTargetThreshold(variable2_values_sorted,variable2_value_matrix, grid_row_size,grid_column_size,grid, total_area,threshold1_area_coverage[count],0.05)
-    print(threshold1_set[count],round(threshold1_area_coverage[count],2),t,round(c,2))
+    threshold2= variable2_values_sorted[t]
+    print(round(threshold1_set[count],2),round(threshold1_area_coverage[count],2),round(threshold2,2),round(c,2))
     if abs(threshold1_area_coverage[count]-c)<0.05:
-        hotspots = hotspotOfCellsUsingBFS(t, grid_row_size, grid_column_size, variable1_value_matrix, grid)
+        hotspots = hotspotOfCellsUsingBFS(threshold2, grid_row_size, grid_column_size, variable1_value_matrix, grid)
         agreement = Agreement(Variable1_hotspots[count], hotspots)
         agreements.append(agreement)
         expected.append(threshold1_area_coverage[count] * c)
-    threshold2_set.append(t)
-    threshold2_area_coverage.append(round(c,2))
+        threshold2_set.append(threshold2)
+        threshold2_area_coverage.append(round(c,2))
 
 print("Thresholds 1",threshold1_set)
 print("Thresholds 2",threshold2_set)
@@ -114,6 +115,7 @@ print("Agreements:", agreements,len(agreements))
 print("Expected:", expected,len(expected))
 print("Sum Agreements:", sum(agreements))
 print("Sum Expected:",sum(expected))
+print("AUC:",sum(agreements)/len(agreements))
 from scipy.stats import chisquare
 chi2, p = chisquare(agreements, expected)
 print(chi2, p)
