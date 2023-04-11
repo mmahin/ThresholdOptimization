@@ -72,7 +72,7 @@ variable2_low_threshold_index, a3 = FindAlphaThreshold(variable2_values_sorted,v
 variable2_high_threshold_index, a4 = FindBetaThreshold(variable2_values_sorted,variable2_value_matrix, grid_row_size,grid_column_size,grid, total_area,beta,0.01)
 
 print(variable1_low_threshold_index, a1 , variable1_high_threshold_index, a2, variable2_low_threshold_index, a3 , variable2_high_threshold_index, a4 )
-target_threshold1_cutpoint = int((variable1_high_threshold_index- variable1_low_threshold_index)/100)
+target_threshold1_cutpoint = int((variable1_high_threshold_index- variable1_low_threshold_index)/50)
 
 threshold1_set = []
 threshold1_area_coverage = []
@@ -96,11 +96,22 @@ while count < variable1_high_threshold_index:
     count += target_threshold1_cutpoint
 
 for count in range(len(threshold1_area_coverage)):
-    t,c = FindTargetThreshold(variable2_values_sorted,variable2_value_matrix, grid_row_size,grid_column_size,grid, total_area,threshold1_area_coverage[count],0.05)
-    threshold2= variable2_values_sorted[t]
+    found = -1
+    for i in range(len(threshold2_area_coverage)):
+        if abs(threshold1_area_coverage[count]-threshold2_area_coverage[i]) <= 0.005:
+            found = i
+            threshold2 = threshold2_set[i]
+            c = threshold1_area_coverage[i]
+            break
+
+    if found == -1:
+        t,c = FindTargetThreshold(variable2_values_sorted,variable2_value_matrix, grid_row_size,grid_column_size,grid, total_area,threshold1_area_coverage[count],0.05)
+        threshold2= variable2_values_sorted[t]
     print(round(threshold1_set[count],2),round(threshold1_area_coverage[count],2),round(threshold2,2),round(c,2))
     if abs(threshold1_area_coverage[count]-c)<0.05:
-        hotspots = hotspotOfCellsUsingBFS(threshold2, grid_row_size, grid_column_size, variable1_value_matrix, grid)
+
+        hotspots = hotspotOfCellsUsingBFS(threshold2, grid_row_size, grid_column_size, variable2_value_matrix, grid)
+
         agreement = Agreement(Variable1_hotspots[count], hotspots)
         agreements.append(agreement)
         expected.append(threshold1_area_coverage[count] * c)
