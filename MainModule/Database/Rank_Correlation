@@ -1,0 +1,13 @@
+total pattern: 234694 rank correlation:
+Rank Correlation (Correlation Vs Maxima): SpearmanrResult(correlation=0.4457924917004553, pvalue=1.1522353889643648e-10)
+Rank Correlation (Correlation Vs AUC): SpearmanrResult(correlation=0.7446023435552231, pvalue=7.733869874758341e-35)
+Rank Correlation (Maxima Vs AUC): SpearmanrResult(correlation=0.6470373140530209, pvalue=6.410112481701945e-24)
+Rank Correlation (Correlation Vs CVTMaxima): SpearmanrResult(correlation=0.22344954882844115, pvalue=0.0019417916185123498)
+Rank Correlation (Correlation Vs CVTAUC): SpearmanrResult(correlation=0.5404619751822838, pvalue=8.385954124859813e-16)
+Rank Correlation (CVTMaxima Vs CVTAUC): SpearmanrResult(correlation=0.6811697656007384, pvalue=2.9546549758494046e-27)
+Rank Correlation (MoranI Vs Maxima): SpearmanrResult(correlation=0.4867220407038539, pvalue=1.0781282120970854e-12)
+Rank Correlation (MoranI Vs AUC): SpearmanrResult(correlation=0.7252153070284788, pvalue=2.6936975532827293e-32)
+Rank Correlation (MoranI Vs CVTMaxima): SpearmanrResult(correlation=0.19122413363251062, pvalue=0.008220343873141517)
+Rank Correlation (MoranI Vs CVTAUC): SpearmanrResult(correlation=0.5000275558004961, pvalue=2.055611460773099e-13)
+Rank Correlation (Maxima Vs CVTMaxima): SpearmanrResult(correlation=0.12361357145044113, pvalue=0.0892862923585691)
+Rank Correlation (AUC Vs CVTAUC): SpearmanrResult(correlation=0.45698277106378515, pvalue=3.414355078613462e-11)

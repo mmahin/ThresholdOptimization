@@ -1,6 +1,11 @@
 import sqlite3
 import pickle
+from scipy.stats import stats,pearsonr
+import pandas as pd
 
+# connect to the database
+data_path = 'C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/DataProcessing/InitialExtractedData/dataset_combined.csv'
+df = pd.read_csv(data_path)
 # connect to the database
 conn = sqlite3.connect('hotspots_50_1.db')
 # create a cursor object
@@ -33,6 +38,7 @@ min_difference_expected = []
 max_lift = []
 area_under_the_curve = []
 expected_area_under_the_curve = []
+correlations = []
 count = 0
 l = 1
 threshold_area_dict = {}
@@ -58,7 +64,10 @@ for variable1_name in variable_names:
         table_name = variable1_name+"_"+variable2_name
         print(table_name)
         if variable1_name != variable2_name:# and table_name  in already_completed:
-
+            df[variable1_name].fillna(int(df[variable1_name].mean()), inplace=True)
+            df[variable2_name].fillna(int(df[variable2_name].mean()), inplace=True)
+            corr, pval = pearsonr(df[variable1_name], df[variable2_name])
+            correlations.append(corr)
 
             c.execute(f'SELECT * FROM {table_name}')
             rows = c.fetchall()
@@ -176,7 +185,14 @@ for variable1_name in variable_names:
             '''
             count += len(agreement_set)
     l += 1
-print("total pattern:",count)
+ranks_AUC = stats.rankdata(area_under_the_curve)
+ranks_maxima = stats.rankdata(max_agreement)
+ranks_corr = stats.rankdata(correlations)
+print("total pattern:",count, "rank correlation:")
+print("Rank Correlation (Correlation Vs Maxima):", stats.spearmanr(ranks_corr, ranks_maxima))
+print("Rank Correlation (Correlation Vs AUC):", stats.spearmanr(ranks_corr, ranks_AUC))
+print("Rank Correlation (Maxima Vs AUC):", stats.spearmanr(ranks_maxima, ranks_AUC))
+'''
 import pandas as pd
 df = pd.DataFrame()
 df['pattern'] = pattern
@@ -202,3 +218,4 @@ df['area_under_the_curve'] = area_under_the_curve
 df['expected_area_under_the_curve'] = expected_area_under_the_curve
 path = "C:/Users/mdmah/PycharmProjects/ProfessorEick/ProfessorEick/ThresholdOptimization/Outputs/TKDE/Agreements/Files/All/data.csv"
 df.to_csv(path,index=False)
+'''
